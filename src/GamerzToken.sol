@@ -7,16 +7,16 @@ pragma solidity ^0.8.20;
  */
 contract GamerzToken {
 
-    string public name; // Token name
-    string public symbol; // Token symbol
-    uint8 public immutable decimals; // Token decimals
-    uint256 public immutable totalSupply; // Total token supply
+    string public name; 
+    string public symbol; 
+    uint8 public immutable decimals; 
+    uint256 public immutable totalSupply;
 
-    mapping(address => uint256) private _balance; // The balances of the token holders
-    mapping(address => mapping(address => uint256)) private _allowances; // Allowed token transfers
+    mapping(address => uint256) private _balance; 
+    mapping(address => mapping(address => uint256)) private _allowances; 
 
-    event Transfer(address indexed from, address indexed to, uint256 value); // Emitted when tokens are transferred
-    event Approval(address indexed owner, address indexed spender, uint256 value); // Emitted when approval is granted by the contract owner
+    event Transfer(address indexed from, address indexed to, uint256 value);
+    event Approval(address indexed owner, address indexed spender, uint256 value); 
 
     /**
      * @dev Constructor function to initialize the contract with token details and supply.
@@ -28,7 +28,7 @@ contract GamerzToken {
         symbol = _symbol;
         decimals = 18;
         totalSupply = 100000 * (10 ** uint256(decimals));
-        _balance[msg.sender] = totalSupply; // Assign total supply to contract deployer
+        _balance[msg.sender] = totalSupply; 
     }
 
     /**
@@ -47,13 +47,13 @@ contract GamerzToken {
      * @return A boolean that indicates whether the operation was successful.
      */
     function transfer(address to, uint256 value) public returns (bool) {
-        require(to != address(0), "Invalid recipient address!"); // Ensure recipient address is valid
-        require(value > 0, "Transfer amount must be greater than zero!"); // Ensure transfer value is greater than zero
-        require(_balance[msg.sender] >= value, "Insufficient balance!"); // Ensure sender has enough balance
+        require(to != address(0), "Invalid recipient address!"); 
+        require(value > 0, "Transfer amount must be greater than zero!"); 
+        require(_balance[msg.sender] >= value, "Insufficient balance!"); 
 
-        _balance[msg.sender] -= value; // Subtract tokens from sender
-        _balance[to] += value; // Add tokens to recipient
-        emit Transfer(msg.sender, to, value); // Emit Transfer event
+        _balance[msg.sender] -= value; 
+        _balance[to] += value; 
+        emit Transfer(msg.sender, to, value); 
         return true;
     }
 
@@ -65,16 +65,16 @@ contract GamerzToken {
      * @return A boolean that indicates whether the operation was successful.
      */
     function transferFrom(address from, address to, uint256 value) public returns (bool) {
-        require(from != address(0), "Invalid sender address!"); // Ensure sender address is valid
-        require(to != address(0), "Invalid recipient address!"); // Ensure recipient address is valid
-        require(value > 0, "Transfer amount must be greater than zero!"); // Ensure transfer value is greater than zero
-        require(_balance[from]>= value, "Insufficient sender balance!"); // Ensure sender has enough balance
-        require(_allowances[from][msg.sender] >= value, "Insufficient allowance!"); // Ensure allowance is sufficient
+        require(from != address(0), "Invalid sender address!"); 
+        require(to != address(0), "Invalid recipient address!"); 
+        require(value > 0, "Transfer amount must be greater than zero!"); 
+        require(_balance[from]>= value, "Insufficient sender balance!"); 
+        require(_allowances[from][msg.sender] >= value, "Insufficient allowance!"); 
 
-        _balance[from] -= value; // Subtract tokens from sender
-        _balance[to] += value; // Add tokens to recipient
-        _allowances[from][msg.sender] -= value; // Subtract allowance
-        emit Transfer(from, to, value); // Emit Transfer event
+        _balance[from] -= value; 
+        _balance[to] += value; 
+        _allowances[from][msg.sender] -= value; 
+        emit Transfer(from, to, value); // 
         return true;
     }
 
@@ -85,10 +85,10 @@ contract GamerzToken {
      * @return A boolean that indicates whether the operation was successful.
      */
     function approve(address spender, uint256 value) public returns (bool) {
-        require(spender != address(0), "Invalid spender address!"); // Ensure spender address is valid
+        require(spender != address(0), "Invalid spender address!"); 
         
-        _allowances[msg.sender][spender] = value; // Set spender's allowance
-        emit Approval(msg.sender, spender, value); // Emit Approval event
+        _allowances[msg.sender][spender] = value;
+        emit Approval(msg.sender, spender, value); 
         return true;
     }
 
