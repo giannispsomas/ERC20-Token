@@ -1,8 +1,8 @@
-## ERC-20 Token, coded from scratch
+## ERC-20 Token
 
-**This is a simple ERC-20 token, coded from scratch, using the Foundry framework for testing**
+**This is a simple ERC-20 token, using the Foundry framework, and without making use of libraries**
 
-Foundry consists of:
+It consists of:
 
 -   Coded the token from scratch (gave it a name and a symbol).
 -   Created a simple deploy script for the contract (it is not deployed).
