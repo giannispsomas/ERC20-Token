@@ -2,9 +2,9 @@
 
 **This is a simple ERC-20 token, using the Foundry framework, and without making use of libraries**
 
--   Coded the token from scratch (gave it a name and a symbol).
+-   Coded the token from scratch without imports.
 -   Created a simple deploy script for the contract (it is not deployed).
--   Used Foundry for testing the contract.
+-   Tested the contract.
 
 ### Purpose
 
