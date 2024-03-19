@@ -4,7 +4,7 @@
 
 -   Coded the token from scratch without imports.
 -   Created a simple deploy script for the contract (currently, it is not deployed).
--   Tested the contract.
+-   Tsted the contract's logic using Foundry tests.
 
 ### Purpose
 
